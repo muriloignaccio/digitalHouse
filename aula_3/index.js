@@ -1,5 +1,5 @@
 const PETSHOP = "Petshop DH";
-console.log("** " + PETSHOP + " **");
+console.log(`** ${PETSHOP} **`);
 let pets = [
   {
     nome: "Batman",
@@ -57,17 +57,26 @@ const vacinarPet = pet => {
   }
 }
 const listarPets = () => {
-  for(let i = 0; i < pets.length; i++) {
-    console.log("---------------------");
-    console.log("Nome: " + pets[i].nome);
-    console.log("Tipo: " + pets[i].tipo);
-    console.log("Raça: " + pets[i].raca);
-    console.log("Idade: " + pets[i].idade);
-    console.log("Genero: " + (pets[i].genero == "F" ? "Femea" : "Macho"));
-    console.log("Vacinado: " + (pets[i].vacinado ? "Sim" : "Não"));
-    console.log("Serviços: " + pets[i].servicos);
+  for(let pet of pets){
+    //   console.log(`
+    //   ---------------------
+    //   Nome: ${pet.nome}
+    //   Tipo: ${pet.tipo}
+    //   Raça: ${pet.raca}
+    //   Idade: ${pet.idade}
+    //   Genero: ${pet.genero == "F" ? "Femea" : "Macho"}
+    //   Vacinado: ${pet.vacinado ? "Sim" : "Não"}
+    //   Serviços: ${pet.servicos === false ? "Nenhum" : pet.servicos}
+    //   `)
   }
+  pets.map(pet => {
+      console.log("-------------");
+      for(atributo in pet){
+          console.log(`${atributo}: ${pet[atributo]}`)
+      }
+  })
 }
+listarPets();
 let verificar = dadosPet => {
     switch(typeof dadosPet){
         case "object":
@@ -105,33 +114,26 @@ const darBanhoPet = pet => {
     pet.servicos.push("banho");
     console.log(`${pet.nome} foi banhado com sucesso!`);
 }
-const atenderPet = (pet, servicos) => {
+const atenderPet = (pet, ...servicos) => {
     console.log(`Bem vindo ${pet.nome}!`);
-    for(let i=0; i<servicos.length; i++){
-        servicos[i](pet);
+    for(let servico of servicos){
+        servico(pet);
     }
     const pagar = () => {console.log("Pagamento realizado com sucesso!")}
     pagar();
     console.log("Volte sempre!");
 }
-// atenderPet(pets[0], [tosarPet, cortarUnhasPet, darBanhoPet]);
-
 const contarVacinados = pets => {
-    let vacinados = [];
-    let nVacinados = [];
-    for(let i = 0; i < pets.length; i++){
-        pets[i].vacinado ? vacinados.push(pets[i]) : nVacinados.push(pets[i]);
-    }
+    let vacinados = pets.filter(pet => pet.vacinado);
+    let nVacinados = pets.filter(pet => !pet.vacinado);
     console.log(`Foram encontrados ${nVacinados.length} pets não vacinados`)
     console.log(`Foram encontrados ${vacinados.length} pets vacinados`);
     return nVacinados;
 }
 
 const campanhaVacina = () => {
-    let nVacinados = contarVacinados(pets);
-    for(let i = 0; i < nVacinados.length; i++){
-        vacinarPet(nVacinados[i]);
-    }    
+    let nVacinados = contarVacinados(pets).map(vacinarPet);
     console.log(`${nVacinados.length} pets foram vacinados nessa campanha!`);
 }
-campanhaVacina();
+const buscarPetPeloNome = nome => pets.filter(pet => pet.nome === nome).pop();
+// console.log(buscarPetPeloNome(""));
