@@ -33,17 +33,17 @@ const server = http.createServer((req, res) => {
                 res.write("Não foi encontrado nenhum pet");
             }
             break;
-        case "/campanha":
+        case "/pets/campanha":
             res.write("Campanha de vacina 2020!");
             res.write(petshop.contarVacinados());
             res.write("Vacinando...\n");
             res.write(petshop.campanhaVacina());
             break;
-        case "/atendimento":
+        case "/pets/atendimento":
             let { nome: nomePet, servicos } = queryString;
             servicos = servicos.split(",");
             res.write(`Bem vindo, ${nomePet}\n`);
-            res.write(petshop.atenderPet(nomePet, res, ...servicos));
+            res.write(petshop.atenderPet(nomePet, ...servicos));
             break;
         default:
             res.write("to perdido me ajuda pfvr");

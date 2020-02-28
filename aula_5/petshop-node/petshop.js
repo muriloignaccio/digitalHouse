@@ -139,7 +139,7 @@ const apararUnhasPet = nomePet => {
 };
 
 
-const atenderPet = (nomePet, res, ...servicosSolicitados) => {
+const atenderPet = (nomePet, ...servicosSolicitados) => {
 	
 	const servicosCadastrados = [darBanhoPet, tosarPet, apararUnhasPet];
 
@@ -148,7 +148,7 @@ const atenderPet = (nomePet, res, ...servicosSolicitados) => {
 	servicosSolicitados.forEach(cadaServico => {
 		servicosCadastrados.forEach(servico => {
 			if (cadaServico.trim() == servico.name) {
-				conteudo += servico(nomePet, res) + "\n";
+				conteudo += servico(nomePet) + "\n";
 			}
 		});
 	})
