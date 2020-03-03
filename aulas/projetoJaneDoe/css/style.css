@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap");
 
-a.active {
+ul li a.active {
   font-weight: 700;
   color: rebeccapurple;
 }
