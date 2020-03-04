@@ -4,7 +4,6 @@
   padding:0;
   margin:0;
   vertical-align:baseline;
-  list-style:none;
   border:0
 }
 
@@ -74,6 +73,29 @@ main#banner {
   background-repeat: no-repeat;
   background-size: cover;
   height: 77vh;
+}
+
+main#music {
+  margin: 50px 0 50px 15vw;
+}
+
+main#music h2 {
+  font-size: 24pt;
+  margin: 20px 0;
+}
+
+main#music iframe {
+  height: 360px;
+  width: 640px;
+}
+
+main#music p {
+  margin: 15px 0;
+}
+
+main#music ul {
+  line-height: 20px;
+  margin: 20px 4vw;
 }
 
 /* FOOTER */
