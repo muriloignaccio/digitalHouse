@@ -42,6 +42,32 @@ header nav a.active {
 
 /* MAIN */
 
+main#about {
+  margin: 50px 0;
+  text-align: center;
+}
+
+main#about h2 {
+  font-size: 24pt;
+  margin: 10px 0;
+}
+
+main#about img {
+  padding: 10px 0;
+  width: 400px;
+}
+
+main#about p.author-text {
+  color: #555;
+  padding: 10px 0;
+}
+
+main#about p.quote-text {
+  font-size: 16pt;
+  font-weight: 700;
+  padding: 10px 20px;
+}
+
 main#banner {
   background-image: url("../img/jane.jpg");
   background-position: center;
