@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap");
 
+* {
+  box-sizing: border-box;
+}
+
 ul li a.active {
   font-weight: 700;
   color: rebeccapurple;
@@ -45,16 +49,7 @@ main#about img {
   width: 45vw;
 }
 
-main#banner {
-  background-image: url("../img/jane.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 72vh;
-
-}
-
-main#contact {
+section#contact, section#form, main > h2:first-child {
   margin: 30px auto;
   width: 80vw;
 }
@@ -74,6 +69,78 @@ div.quote-block {
 div.quote-block p {
   margin: 0;
   padding: 1vh 0;
+}
+
+
+section#banner {
+  background-image: url("../img/jane.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 72vh;
+}
+
+section#concept, section#songs {
+  padding: 40px 0;
+  margin: 0 auto;
+  max-width: 100%;
+  width: 900px;
+}
+
+.duas-colunas {
+  overflow: hidden;
+}
+
+.duas-colunas > div {
+  float: left;
+  width: 50%;
+}
+
+
+
+form button {
+  background-color: orange;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.mapa {
+  padding-left: 30px;
+}
+
+.mapa iframe {
+  height: 400px;
+  width: 100%;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+  padding: 5px;
+  width: 100%;
+}
+
+form textarea {
+  resize: none;
+  height: 50px;
+}
+
+.form-group {
+  margin: 0 0 10px;
+}
+
+section#songs img {
+  width: 100%;
+}
+
+section#songs li {
+  padding: 20px 0;
+}
+
+section#songs li strong {
+  color: #f2a82e;
 }
 
 /* FOOTER */
