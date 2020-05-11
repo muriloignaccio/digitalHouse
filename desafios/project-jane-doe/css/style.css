@@ -15,8 +15,12 @@ body {
 /* HEADER */
 
 header {
-  border: 1px solid #d0d0d0;
+  background-color: white;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  position: fixed;
   text-align: center;
+  top: 0;
+  width: 100%;
 }
 
 header h1 {
@@ -25,21 +29,25 @@ header h1 {
 }
 
 header nav {
-  margin: 10px 0;
+  margin: 30px 0;
 }
 
 header nav a {
   color: #555;
-  margin: 0  5px;
+  margin: 0  20px;
   text-decoration: none;
 }
 
 header nav a.active {
-  color: #d87d7d;
+  color: orange;
   font-weight: 700;
 }
 
 /* MAIN */
+
+main {
+  margin-top: 136px;
+}
 
 main#about {
   margin: 50px 0;
@@ -67,12 +75,19 @@ main#about p.quote-text {
   padding: 10px 20px;
 }
 
-main#banner {
+section#banner {
   background-image: url("../img/jane.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 77vh;
+}
+
+section#concept,
+section#songs {
+  margin: 0 auto;
+  padding: 50px 0;
+  width: 900px;
 }
 
 main#contact {

@@ -6,7 +6,7 @@
 
 ul li a.active {
   font-weight: 700;
-  color: rebeccapurple;
+  color: #f2a82e;
 }
 
 body {
@@ -15,8 +15,13 @@ body {
 }
 
 header {
-  border: solid 1px #d0d0d0;
+  /* border: solid 1px #d0d0d0; */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  position: fixed;
   text-align: center;
+  top: 0;
+  background-color: #fff;
+  width: 100%;
 }
 
 header h1 {
@@ -40,6 +45,10 @@ ul.anchor-block li {
 
 /* MAIN */
 
+main {
+  margin-top: 134px !important;
+}
+
 main#about {
   padding: 5vh 0;
   text-align: center;
@@ -56,6 +65,7 @@ section#contact, section#form, main > h2:first-child {
 
 main#music {
   padding: 5vh 0 0 15vw;
+  max-width: 100%;
 }
 
 main#music iframe {
@@ -160,3 +170,72 @@ p.author {
   font-size: 14px;
 }
 
+@media (max-width: 768px) {
+  .duas-colunas > div {
+    width: 100%;
+  }
+
+  label {
+    font-size: 24px;
+  }
+
+  section#concept,
+  section#songs {
+    padding: 40px;
+  }
+
+  h2 {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  p {
+    font-size: 24px;
+    line-height: 35px;
+    text-align: justify;
+  }
+
+  section#concept ol li {
+    font-size: 26px;
+  }
+
+  section#songs ol li {
+    font-size: 24px;
+  }
+
+  section#form form input {
+    padding: 10px;
+    font-size: 24px;
+  }
+
+  section#form form button {
+    font-size: 22px;
+    padding: 10px 35px;
+    margin: 20px 0;
+  }
+
+  section#form .form-group {
+    margin-bottom: 30px;
+  }
+
+  .mapa {
+    padding: 0;
+    margin-top: 20px;
+  }
+
+  nav ul li a {
+    font-size: 24px;
+  }
+
+  main#music {
+    padding: 0 40px;
+  }
+
+  main#music iframe {
+    width: 100%;
+  }
+
+  main#music ul li {
+    font-size: 24px;
+  }
+}

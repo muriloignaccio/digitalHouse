@@ -1,4 +1,4 @@
-const PizzaModel = require("../model/PizzaModel");
+const PizzaModel = require("../models/PizzaModel");
 const PedidoController = {
   index: (req, res) => {
 		res.send(PizzaModel.listarPedidos());
