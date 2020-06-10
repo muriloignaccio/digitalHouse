@@ -5,7 +5,6 @@ import {
   ButtonGroup,
   InputGroup,
   FormControl,
-  ToggleButtonGroup,
   ToggleButton,
 } from 'react-bootstrap';
 
