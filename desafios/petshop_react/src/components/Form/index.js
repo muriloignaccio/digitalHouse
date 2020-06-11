@@ -1,23 +1,34 @@
 import React, { useState } from 'react';
 import {
+  Alert,
   Modal,
   Button,
   ButtonGroup,
+  Card,
+  Col,
   InputGroup,
   FormControl,
+  Row,
   ToggleButton,
 } from 'react-bootstrap';
 
 export default ({ show, handleClick, handleSubmit, handlePets }) => {
-  const [gender, setGender] = useState('Fêmea');
+  const [gender, setGender] = useState('Macho');
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
   const [avatar, setAvatar] = useState('');
+  const [error, setError] = useState(false);
+
+  const mockUpAvatar =
+    'https://www.petinsurancereview.com/sites/default/files/styles/large/public/default_images/default_pet.jpg?itok=xSpT8Z_k';
 
   const handleGenderChange = (value) => setGender(value);
   const handleNameChange = (value) => setName(value);
   const handleAgeChange = (value) => setAge(value);
   const handleAvatarChange = (value) => setAvatar(value);
+  const handleVerification = () => {
+    return !(name && age && gender && avatar) || !Number(age);
+  };
 
   return (
     <>
@@ -26,6 +37,37 @@ export default ({ show, handleClick, handleSubmit, handlePets }) => {
           <Modal.Title>Cadastre um novo pet!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          <Row>
+            <Col>
+              <Card className='flex-row mb-4'>
+                <Card.Img
+                  variant='top'
+                  src={avatar ? avatar : mockUpAvatar}
+                  style={{ width: '50%' }}
+                />
+                <Card.Body>
+                  <Card.Title>{name ? name : 'Nome do Pet'}</Card.Title>
+                  <Card.Subtitle className='mb-2 text-muted'>
+                    {!Number(age)
+                      ? 'Idade do pet'
+                      : Number(age) === 1
+                      ? `${age} aninho`
+                      : `${age} aninhos`}
+                  </Card.Subtitle>
+                  <Card.Text>{gender}</Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+          {error && (
+            <Row>
+              <Col>
+                <Alert variant='danger'>
+                  Todos os campos devem ser preenchidos corretamente!
+                </Alert>
+              </Col>
+            </Row>
+          )}
           <InputGroup className='mb-3'>
             <InputGroup.Prepend>
               <InputGroup.Text id='basic-addon1'>Nome</InputGroup.Text>
@@ -33,6 +75,7 @@ export default ({ show, handleClick, handleSubmit, handlePets }) => {
             <FormControl
               placeholder='Nome do Pet'
               aria-label='Username'
+              required
               aria-describedby='basic-addon1'
               value={name}
               onChange={(e) => handleNameChange(e.target.value)}
@@ -92,6 +135,7 @@ export default ({ show, handleClick, handleSubmit, handlePets }) => {
           <Button
             variant='success'
             onClick={() => {
+              if (handleVerification()) return setError(true);
               handlePets({
                 id: Math.ceil(Math.random() * 999),
                 name,

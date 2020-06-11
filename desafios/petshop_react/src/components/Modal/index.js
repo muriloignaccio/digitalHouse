@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
 export default ({
+  id,
   name,
   handleClick,
   show,
@@ -10,6 +11,7 @@ export default ({
   handleAnjo,
   demonios,
   handleDemonio,
+  handleDelete,
 }) => (
   <>
     <Modal show={show} onHide={handleClick}>
@@ -33,6 +35,7 @@ export default ({
             handleAnjo(anjos + 1);
             handleClick();
             handleAdoption();
+            handleDelete(id);
           }}
         >
           Sim

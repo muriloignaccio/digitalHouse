@@ -10,6 +10,7 @@ function App() {
   const [submit, setSubmit] = useState(false);
   const [anjos, setAnjos] = useState(0);
   const [demonios, setDemonios] = useState(0);
+  const [isAdopted, setIsAdopted] = useState(false);
   const [pets, setPets] = useState([
     {
       id: 1,
@@ -87,6 +88,8 @@ function App() {
     },
   ];
 
+  const handleDelete = (id) => setPets(pets.filter((pet) => pet.id !== id));
+
   const handleClick = () => {
     setShow(!show);
   };
@@ -99,18 +102,22 @@ function App() {
     setPets([pet, ...pets]);
   };
 
+  const handleAdoption = () => {
+    setIsAdopted(!isAdopted);
+  };
+
   return (
     <>
       <Header title='Petshop DH' />
       <Container>
         <Title title='Bixinhos' />
         <Row>
-          <Col>
+          <Col md={6}>
             <Alert variant='danger'>
               Número de pessoas que vão pro inferno: {demonios}
             </Alert>
           </Col>
-          <Col>
+          <Col md={6}>
             <Alert variant='success'>
               Número de pessoas que vão pro céu: {anjos}
             </Alert>
@@ -129,15 +136,17 @@ function App() {
             </Button>
           </Col>
         </Row>
-        <Row className='justify-content-md-between'>
+        <Row className='justify-content-md-between justify-content-center'>
           {pets.map((pet) => (
-            <Col key={pet.id} md='auto'>
+            <Col key={pet.id} md='auto' style={{ width: 'fit-content' }}>
               <Card
                 data={pet}
                 anjos={anjos}
                 demonios={demonios}
                 handleAnjo={setAnjos}
                 handleDemonio={setDemonios}
+                handleDelete={handleDelete}
+                handleAdoption={handleAdoption}
               />
             </Col>
           ))}
@@ -153,6 +162,9 @@ function App() {
           handleSubmit={handleSubmit}
           handlePets={handlePets}
         />
+      )}
+      {isAdopted && (
+        <SuccessMessage adopted={true} handleClose={handleAdoption} />
       )}
       {submit && <SuccessMessage handleClose={handleSubmit} />}
     </>

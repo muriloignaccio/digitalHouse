@@ -3,20 +3,18 @@ import { Card, Button } from 'react-bootstrap';
 import { Modal, SuccessMessage } from '../';
 
 export default ({
-  data: { name, age, gender, avatar },
+  data: { id, name, age, gender, avatar },
   anjos,
   handleAnjo,
   demonios,
   handleDemonio,
+  handleDelete,
+  handleAdoption,
 }) => {
   const [show, setShow] = useState(false);
-  const [isAdopted, setIsAdopted] = useState(false);
 
   const handleClick = () => {
     setShow(!show);
-  };
-  const handleAdoption = () => {
-    setIsAdopted(!isAdopted);
   };
 
   return (
@@ -37,14 +35,15 @@ export default ({
           handleClick={handleClick}
           handleAnjo={handleAnjo}
           handleDemonio={handleDemonio}
+          handleDelete={handleDelete}
           anjos={anjos}
           demonios={demonios}
           handleAdoption={handleAdoption}
+          id={id}
           show={show}
           name={name}
         />
       )}
-      {isAdopted && <SuccessMessage handleClose={handleAdoption} />}
     </>
   );
 };
